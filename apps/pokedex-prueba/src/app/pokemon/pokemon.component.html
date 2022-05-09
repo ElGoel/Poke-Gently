@@ -1,0 +1,35 @@
+<header>
+  <div class="contenedor">
+    <mat-form-field class="formulario">
+      <mat-label>Pokemon Name</mat-label>
+      <input matInput type="text" [(ngModel)]="name">
+    </mat-form-field>
+    <div class="boton">
+      <button mat-raised-button color="Primary" (click)="search()">Buscar</button>
+    </div>
+  </div>
+</header>
+<mat-divider></mat-divider>
+<section>
+  <div *ngIf="loading else elseBlock">
+    <mat-spinner></mat-spinner>
+  </div>
+  <ng-template #elseBlock>
+    <mat-grid-list cols="6" rowHeight="1:1">
+      <mat-grid-tile *ngFor="let pokemon of pokemons; index as i">
+        <pokedex-gently-pokemon-card [pokemon]="pokemon"></pokedex-gently-pokemon-card>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </ng-template>
+</section>
+<footer class="paginador">
+  <div class="botones-paginador">
+    <button mat-raised-button (click)="currentPage = currentPage - 1" (click)="selectPage(currentPage)" [disabled]="currentPage < 2 || loading">Anterior</button>
+    <button mat-raised-button (click)="currentPage = 1" (click)="selectPage(1)" [disabled]="currentPage < 2 || loading">Primera</button>
+    <button mat-raised-button (click)="currentPage = currentPage - 1" (click)="selectPage(currentPage)" [disabled]="currentPage < 2 || loading">{{ currentPage > 1 ? currentPage - 1 : '-' }}</button>
+    <button mat-raised-button disabled>{{currentPage}}</button>
+    <button mat-raised-button (click)="currentPage = currentPage + 1" (click)="selectPage(currentPage)" [disabled]="currentPage === pages.length || loading">{{ currentPage === pages.length ? '-' : currentPage + 1 }}</button>
+    <button mat-raised-button (click)="currentPage = pages.length" (click)="selectPage(pages.length - 1)" [disabled]="currentPage === pages.length || loading">ultima</button>
+    <button mat-raised-button (click)="currentPage = currentPage + 1" (click)="selectPage(currentPage)" [disabled]="currentPage === pages.length || loading">Siguiente</button>
+  </div>
+</footer>

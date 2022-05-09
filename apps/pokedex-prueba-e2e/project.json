@@ -1,0 +1,27 @@
+{
+  "sourceRoot": "apps/pokedex-prueba-e2e/src",
+  "projectType": "application",
+  "targets": {
+    "e2e": {
+      "executor": "@nrwl/cypress:cypress",
+      "options": {
+        "cypressConfig": "apps/pokedex-prueba-e2e/cypress.json",
+        "devServerTarget": "pokedex-prueba:serve:development"
+      },
+      "configurations": {
+        "production": {
+          "devServerTarget": "pokedex-prueba:serve:production"
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/pokedex-prueba-e2e/**/*.{js,ts}"]
+      }
+    }
+  },
+  "tags": [],
+  "implicitDependencies": ["pokedex-prueba"]
+}

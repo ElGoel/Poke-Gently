@@ -1,0 +1,29 @@
+.carta {
+  background-color: #da8484f3;
+  width: 100%;
+}
+
+mat-card-title {
+  text-align: center;
+  color: white;
+  margin-bottom: 0;
+}
+
+mat-card-actions {
+  display: flex;
+  padding: 0;
+  justify-content: center;
+  grid-template-columns: auto;
+  column-gap: 8px;
+  height: 50%;
+}
+img {
+  margin-bottom: 0;
+  max-height: 170px;
+}
+
+mat-spinner {
+  margin: 0 auto;
+}
+
+
