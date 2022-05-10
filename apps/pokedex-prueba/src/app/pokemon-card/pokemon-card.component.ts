@@ -12,6 +12,12 @@ export class PokemonCardComponent implements OnInit {
     name: '',
     sprites: {
       front_default: '',
+      front_shiny: '',
+      other: {
+        home: {
+          front_default: '',
+        }
+      }
     },
     types: [],
   };

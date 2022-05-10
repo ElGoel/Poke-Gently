@@ -1,11 +1,11 @@
-<section>
+<section class="bounce">
   <div *ngIf="loading else elseBlock">
     <mat-spinner></mat-spinner>
   </div>
   <ng-template #elseBlock>
     <div class="contenedor">
       <mat-card class="carta">
-        <img mat-card-image src="{{pokemonInfo.sprites.front_default}}" alt="">
+        <img mat-card-image src="{{pokemonInfo.sprites.front_default || pokemonInfo.sprites.other.home.front_default || pokemonInfo.sprites.front_shiny || 'https://2.bp.blogspot.com/-pLPwRUuQeFw/WCSfHuo-NXI/AAAAAAAAMj0/nywzBkuHu8g-wrb5Vai50cUGayEriIzZACLcB/s1600/Pokeball2.png'}}" alt="">
         <mat-card-content class="contenido">
           <mat-card-title class="titulo">
             {{pokemonInfo.name}}

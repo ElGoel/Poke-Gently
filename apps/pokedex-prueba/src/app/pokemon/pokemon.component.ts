@@ -51,23 +51,23 @@ export class PokemonComponent implements OnInit {
     this.loading = true;
     this.pokemons = [];
     if (this.name) {
-      const localPokemon = localStorage.getItem(this.name);
-      if (localPokemon) {
-        this.pokemons.push(JSON.parse(localPokemon));
-        this.loading = false;
-      } else {
-        this.pokemonService.getPokemon(this.name).subscribe({
-          next: (data) => {
-            localStorage.setItem(this.name, JSON.stringify(data));
-            this.pokemons.push(data);
-            this.loading = false;
-          },
-          error: ({ error }) => {
-            console.log(error);
-            this.loading = false;
-          },
-        });
-      }
+      // const localPokemon = localStorage.getItem(this.name);
+      // if (localPokemon) {
+      // this.pokemons.push(JSON.parse(localPokemon));
+      // this.loading = false;
+      // } else {
+      this.pokemonService.getPokemon(this.name).subscribe({
+        next: (data) => {
+          // localStorage.setItem(this.name, JSON.stringify(data));
+          this.pokemons.push(data);
+          this.loading = false;
+        },
+        error: ({ error }) => {
+          console.log(error);
+          this.loading = false;
+        },
+      });
+      // }
     } else {
       this.getPokemons('');
     }
@@ -86,10 +86,10 @@ export class PokemonComponent implements OnInit {
   }
 
   selectPage(page: number) {
-    this.getPokemons(this.pages[page -1].url);
+    this.getPokemons(this.pages[page - 1].url);
   }
 
   ngOnInit(): void {
-    this.getPokemons('');
+    this.getPokemons(''); // necesario para evitar un error
   }
 }
