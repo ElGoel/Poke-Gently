@@ -13,12 +13,16 @@ export class PokemonCardComponent implements OnInit {
     sprites: {
       front_default: '',
     },
+    types: [],
   };
+
+  pokemonTypes:any[] = [];
 
   @Input() pokemon = {
     url: '',
     name: '',
   };
+
 
   constructor(private http: HttpClient) {}
 
@@ -32,6 +36,9 @@ export class PokemonCardComponent implements OnInit {
         // pokemonsArray.push(data);
         // localStorage.setItem('pokemonsArray', JSON.stringify(pokemonsArray));
         this.pokemonInfo = data;
+        this.pokemonInfo.types.forEach((types:any) => {
+          this.pokemonTypes.push(types);
+        }),
         this.loading = false;
       });
     } else {
@@ -50,8 +57,7 @@ export class PokemonCardComponent implements OnInit {
       // }
       this.loading = false;
     }
-  }
-
+  };
   ngOnInit(): void {
     this.getPokemon();
   }

@@ -3,17 +3,24 @@
     <mat-spinner></mat-spinner>
   </div>
   <ng-template #elseBlock>
-    <mat-card class="carta">
-        <mat-card-title>{{pokemonInfo.name}}</mat-card-title>
-      <img mat-card-image src="{{pokemonInfo.sprites.front_default}}" alt="">
-      <mat-card-actions align="end">
-        <button mat-fab color="primary" aria-label="Example icon button with a delete icon">
-          <mat-icon>delete</mat-icon>
-        </button>
-        <button mat-fab color="warn" aria-label="Example icon button with a heart icon">
-          <mat-icon>border_color</mat-icon>
-        </button>
-      </mat-card-actions>
-    </mat-card>
+    <div class="contenedor">
+      <mat-card class="carta">
+        <img mat-card-image src="{{pokemonInfo.sprites.front_default}}" alt="">
+        <mat-card-content class="contenido">
+          <mat-card-title class="titulo">
+            {{pokemonInfo.name}}
+          </mat-card-title>
+          <div class="titulos">
+            <div *ngFor="let pokemonType of pokemonTypes; index as i">
+              <div class="colorType" ngClass="type-{{pokemonType.type.name}}">
+                <p>
+                  {{pokemonType.type.name}}
+                </p>
+              </div>
+            </div>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </div>
   </ng-template>
 </section>

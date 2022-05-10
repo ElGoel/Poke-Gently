@@ -1,43 +1,28 @@
 .contenedor {
   display: flex;
-  flex-direction: row;
   justify-content: center;
-  column-gap: 6px;
-  margin-top: 50px;
+  padding-top: 20px;
 }
 
-
-.formulario {
-  max-width: 100px;
-  min-width: 200px;
-  width: 100%;
-}
-
-
-mat-card {
-  max-height: 100px;
+.contenidoSection {
   margin: 0 auto;
-  background-color: #da8484f3;
+  background-color: white;
+  width: 95%;
+  padding: 2rem 0 2rem 0;
 }
 
-
-mat-card-header {
-  justify-content: center;
-}
-
-.paginador {
-  display: flex;
-  justify-content: center;
-  column-gap: 5px;
+mat-divider {
+ margin-bottom: 10px;
 }
 
 .botones-paginador {
-  margin-bottom: 5px;
+  display: flex;
+  justify-content: center;
+  column-gap: 5px;
+  margin: 5px 0 5px 0;
 }
 
 mat-spinner {
   margin: 0 auto;
 }
-
-
 

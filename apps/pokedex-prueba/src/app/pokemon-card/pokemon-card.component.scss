@@ -1,29 +1,62 @@
-.carta {
-  background-color: #da8484f3;
-  width: 100%;
+$types: (
+    steel: #CCCCCC,
+    water: #B0E2FF,
+    bug: #99CC33,
+    dragon: #AB82FF,
+    electric: #FFD700,
+    ghost: #778899,
+    fire: #FF7F00,
+    fairy: #FFB0FF,
+    ice: #ADD8E6,
+    fight: #FF6A6A,
+    normal: #DDCCAA,
+    grass: #99FF66,
+    flying: #BAAAFF,
+    poison: #CC88BB,
+    ground: #DEB887,
+    rock: #CD853F,
+    psychic: #FFB5C5,
+    dark: #A9A9A9,
+);
+
+@each $typename, $color in $types {
+    .type-#{$typename} {
+       background-color: $color;
+    }
 }
 
-mat-card-title {
-  text-align: center;
-  color: white;
-  margin-bottom: 0;
+.contenedor {
+  .carta {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    color: white;
+    padding: 25px;;
+    height: 240px;
+    width: 150px;
+    img {
+      padding: 0;
+      background-color: rgb(228, 226, 226);
+    }
+  }
+  .contenido {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: black;
+    .titulos {
+      display: flex;
+      justify-content: center;
+      column-gap: 25px;
+      padding-top: 10px;
+      .colorType{
+        border-radius: 15%;
+        padding: 2px;
+      }
+      p {
+        margin-bottom: 0;
+      }
+    }
+  }
 }
-
-mat-card-actions {
-  display: flex;
-  padding: 0;
-  justify-content: center;
-  grid-template-columns: auto;
-  column-gap: 8px;
-  height: 50%;
-}
-img {
-  margin-bottom: 0;
-  max-height: 170px;
-}
-
-mat-spinner {
-  margin: 0 auto;
-}
-
-
