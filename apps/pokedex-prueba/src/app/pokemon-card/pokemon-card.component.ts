@@ -60,6 +60,9 @@ export class PokemonCardComponent implements OnInit {
       // } else {
       // pokemonsArray.push(this.pokemonInfo);
         this.pokemonInfo = { ...this.pokemonInfo, ...this.pokemon };
+        this.pokemonInfo.types.forEach((types:any) => {
+          this.pokemonTypes.push(types);
+        }),
       // }
       this.loading = false;
     }
