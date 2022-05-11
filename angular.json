@@ -2,6 +2,8 @@
   "version": 2,
   "projects": {
     "pokedex-prueba": "apps/pokedex-prueba",
-    "pokedex-prueba-e2e": "apps/pokedex-prueba-e2e"
+    "pokedex-prueba-e2e": "apps/pokedex-prueba-e2e",
+    "prueba-grid": "apps/prueba-grid",
+    "prueba-grid-e2e": "apps/prueba-grid-e2e"
   }
 }

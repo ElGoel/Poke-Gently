@@ -1,0 +1,27 @@
+{
+  "sourceRoot": "apps/prueba-grid-e2e/src",
+  "projectType": "application",
+  "targets": {
+    "e2e": {
+      "executor": "@nrwl/cypress:cypress",
+      "options": {
+        "cypressConfig": "apps/prueba-grid-e2e/cypress.json",
+        "devServerTarget": "prueba-grid:serve:development"
+      },
+      "configurations": {
+        "production": {
+          "devServerTarget": "prueba-grid:serve:production"
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/prueba-grid-e2e/**/*.{js,ts}"]
+      }
+    }
+  },
+  "tags": [],
+  "implicitDependencies": ["prueba-grid"]
+}
