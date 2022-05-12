@@ -1,23 +1,9 @@
-<mat-toolbar color="primary" layout="fill">
-  <div> Responsive Grid Demo using Angular Material !! </div>
-</mat-toolbar>
-<mat-card>
-  <mat-card-content>
-    <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="6px">
-      <div></div>
-      <br />
-      <img mat-card-image
-        src="https://lh5.googleusercontent.com/p/AF1QipN_aupGaqTiv5_xbfKTl2qZz0XAJlGMt0WucgkU=w319-h100-k-no"
-        alt="Photos of educba">
-    </div>
-  </mat-card-content>
-</mat-card>
-<mat-grid-list [cols]="pcHd" [cols]="pcSd" [cols]="tablet" [cols]="telefono"  rowHeight="4:0.5" (window:resize)="handleSize($event)">
-  <mat-grid-tile>Grid One</mat-grid-tile>
-  <mat-grid-tile>Grid Two</mat-grid-tile>
-  <mat-grid-tile>Grid Three</mat-grid-tile>
-  <mat-grid-tile>Grid Four</mat-grid-tile>
-  <mat-grid-tile>Grid Five</mat-grid-tile>
-  <mat-grid-tile>Grid Six</mat-grid-tile>
-  <mat-grid-tile>Grid Seven</mat-grid-tile>
+<mat-grid-list #grid [cols]="cols"  rowHeight="4:0.5" gutterSize="2px">
+  <mat-grid-tile class="one">Grid One</mat-grid-tile>
+  <mat-grid-tile class="two">Grid Two</mat-grid-tile>
+  <mat-grid-tile class="three">Grid Three</mat-grid-tile>
+  <mat-grid-tile class="four">Grid Four</mat-grid-tile>
+  <mat-grid-tile class="five">Grid Five</mat-grid-tile>
+  <mat-grid-tile class="six">Grid Six</mat-grid-tile>
+  <mat-grid-tile class="seven">Grid Seven</mat-grid-tile>
 </mat-grid-list>

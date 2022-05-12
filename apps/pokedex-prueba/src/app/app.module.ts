@@ -18,11 +18,20 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { PokemonGridComponent } from './pokemon-grid/pokemon-grid.component';
+// Angular
+import { FlexLayoutModule } from '@angular/flex-layout';
 @NgModule({
   declarations: [
     AppComponent,
     PokemonComponent,
     PokemonCardComponent,
+    PokemonGridComponent,
+  ],
+  exports: [
+    PokemonComponent,
+    PokemonCardComponent,
+    PokemonGridComponent
   ],
   imports: [
     BrowserModule,
@@ -38,7 +47,8 @@ import { MatToolbarModule } from '@angular/material/toolbar';
     MatGridListModule,
     MatProgressSpinnerModule,
     MatPaginatorModule,
-    MatToolbarModule
+    MatToolbarModule,
+    FlexLayoutModule
   ],
   providers: [],
   bootstrap: [AppComponent],

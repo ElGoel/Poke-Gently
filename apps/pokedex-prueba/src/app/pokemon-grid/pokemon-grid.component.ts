@@ -1,20 +1,21 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output } from '@angular/core';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
-@Component({
-  selector: 'pokedex-gently-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss'],
-})
-export class AppComponent implements OnInit {
 
-  cols!: number;
+@Component({
+  selector: 'pokedex-gently-pokemon-grid',
+  templateUrl: './pokemon-grid.component.html',
+  styleUrls: ['./pokemon-grid.component.scss'],
+})
+export class PokemonGridComponent implements OnInit {
+  /* eslint-disable @typescript-eslint/no-explicit-any */
+  columnas!: number;
 
   gridByBreakpoint = {
     xl: 8,
     lg: 6,
     md: 4,
     sm: 2,
-    xs: 1
+    xs: 1,
   };
 
   constructor(private BreakpointObserver: BreakpointObserver) {
@@ -26,23 +27,22 @@ export class AppComponent implements OnInit {
       Breakpoints.XLarge,
     ]).subscribe(result => {
       if ( result.breakpoints[Breakpoints.XSmall] ) {
-        this.cols = this.gridByBreakpoint.xs;
+        this.columnas = this.gridByBreakpoint.xs;
       }
       if ( result.breakpoints[Breakpoints.Small] ) {
-        this.cols = this.gridByBreakpoint.sm;
+        this.columnas = this.gridByBreakpoint.sm;
       }
       if ( result.breakpoints[Breakpoints.Medium] ) {
-        this.cols = this.gridByBreakpoint.md;
+        this.columnas = this.gridByBreakpoint.md;
       }
       if ( result.breakpoints[Breakpoints.Large] ) {
-        this.cols = this.gridByBreakpoint.lg;
+        this.columnas = this.gridByBreakpoint.lg;
       }
       if ( result.breakpoints[Breakpoints.XLarge] ) {
-        this.cols = this.gridByBreakpoint.xl;
+        this.columnas = this.gridByBreakpoint.xl;
       }
     });
   };
 
-
-  ngOnInit() {''}
+  ngOnInit(): void {('')}
 }

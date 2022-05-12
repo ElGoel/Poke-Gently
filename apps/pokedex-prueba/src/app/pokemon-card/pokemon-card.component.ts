@@ -7,6 +7,7 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./pokemon-card.component.scss'],
 })
 export class PokemonCardComponent implements OnInit {
+  /* eslint-disable @typescript-eslint/no-explicit-any */
   loading = false;
   pokemonInfo = {
     name: '',

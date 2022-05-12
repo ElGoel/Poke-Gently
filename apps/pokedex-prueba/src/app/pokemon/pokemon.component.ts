@@ -1,29 +1,54 @@
 import { Component, OnInit } from '@angular/core';
 import { PokemonService } from '../services/pokemon.service';
-
+import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 @Component({
   selector: 'pokedex-gently',
   templateUrl: './pokemon.component.html',
   styleUrls: ['./pokemon.component.scss'],
 })
 export class PokemonComponent implements OnInit {
+   /* eslint-disable @typescript-eslint/no-explicit-any */
   // variables
   loading = false;
   name = '';
   pokemons: any[] = [];
   pages: any[] = [];
   currentPage = 1;
-  pcHd:number | undefined;
-  pcSd:number | undefined;
-  pcRip:number | undefined;
-  pcNor:number | undefined;
-  tlfHd:number | undefined;
-  tlfSd:number | undefined;
+  columnas!: number;
+  gridByBreakpoint = {
+    xl: 8,
+    lg: 6,
+    md: 4,
+    sm: 2,
+    xs: 1,
+  };
 
-
-  constructor(private pokemonService: PokemonService) {}
+  constructor(private pokemonService: PokemonService, private BreakpointObserver: BreakpointObserver) {
+    this.BreakpointObserver.observe([
+      Breakpoints.XSmall,
+      Breakpoints.Small,
+      Breakpoints.Medium,
+      Breakpoints.Large,
+      Breakpoints.XLarge,
+    ]).subscribe(result => {
+      if ( result.breakpoints[Breakpoints.XSmall] ) {
+        this.columnas = this.gridByBreakpoint.xs;
+      }
+      if ( result.breakpoints[Breakpoints.Small] ) {
+        this.columnas = this.gridByBreakpoint.sm;
+      }
+      if ( result.breakpoints[Breakpoints.Medium] ) {
+        this.columnas = this.gridByBreakpoint.md;
+      }
+      if ( result.breakpoints[Breakpoints.Large] ) {
+        this.columnas = this.gridByBreakpoint.lg;
+      }
+      if ( result.breakpoints[Breakpoints.XLarge] ) {
+        this.columnas = this.gridByBreakpoint.xl;
+      }
+    });
+  }
   //funciones
-
   getPokemons(url: string) {
     this.loading = true;
     this.pokemons = [];
@@ -48,7 +73,6 @@ export class PokemonComponent implements OnInit {
       if (!this.pages.length) {
         this.setPaginator(data);
       }
-
       this.pokemons = data.results;
 
       this.loading = false;
@@ -97,22 +121,8 @@ export class PokemonComponent implements OnInit {
     this.getPokemons(this.pages[page - 1].url);
   }
 
+
   ngOnInit(): void {
     this.getPokemons(''); // necesario para evitar un error
-    this.pcHd = (window.innerWidth < 1920) ? 7 : 8;
-    this.pcSd = (window.innerWidth < 1600) ? 6 : 7;
-    this.pcRip = (window.innerWidth < 1360) ? 5 : 6;
-    this.pcNor = (window.innerWidth < 1152) ? 4 : 5;
-    this.tlfHd = (window.innerWidth < 910) ? 3 : 4;
-    this.tlfSd = (window.innerWidth < 720) ? 2 : 3;
-  }
-
-  handleSize(event: any) {
-    this.pcHd = (event.target.innerWidth < 1920) ? 7 : 8;
-    this.pcSd = (event.target.innerWidth < 1600) ? 6 : 7;
-    this.pcRip = (event.target.innerWidth < 1360) ? 5 : 6;
-    this.pcNor = (event.target.innerWidth < 1152) ? 4 : 5;
-    this.tlfHd = (event.target.innerWidth < 910) ? 3 : 4;
-    this.tlfSd = (event.target.innerWidth < 720) ? 2 : 3;
   }
 }
