@@ -20,20 +20,15 @@ export class PokemonComponent implements OnInit {
     lg: 6,
     md: 4,
     sm: 2,
-    xs: 1,
   };
 
   constructor(private pokemonService: PokemonService, private BreakpointObserver: BreakpointObserver) {
     this.BreakpointObserver.observe([
-      Breakpoints.XSmall,
       Breakpoints.Small,
       Breakpoints.Medium,
       Breakpoints.Large,
       Breakpoints.XLarge,
     ]).subscribe(result => {
-      if ( result.breakpoints[Breakpoints.XSmall] ) {
-        this.columnas = this.gridByBreakpoint.xs;
-      }
       if ( result.breakpoints[Breakpoints.Small] ) {
         this.columnas = this.gridByBreakpoint.sm;
       }
